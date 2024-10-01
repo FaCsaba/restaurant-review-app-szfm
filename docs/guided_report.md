@@ -11,7 +11,7 @@ Reports gathered from product owner for requirements
 
 - Should the users be able to search these restaurants? **Yes, they should have the ability to filter their search by the restaurant name and type**
 
-- Should the users need an account to add reviews? No need for account management
+- Should the users need an account to add reviews? **No need for account management**
 
 - What should the review system be? **5 starts**
 
@@ -20,11 +20,11 @@ Reports gathered from product owner for requirements
 - What increments? Can they give half stars? **No half stars, use whole star increments**
 
 - What types of restaurants should restaurants have?
-    - 🍔 Fast Food
-    - 🥗 Healthy
-    - 🍟 American
-    - 🥡 Chinese
-    - ☕ Café
-    - 🍜 Japanese
-    - 🍴 Fine Dining
-    - 🍨 Dessert
+    - 🍔 **Fast Food**
+    - 🥗 **Healthy**
+    - 🍟 **American**
+    - 🥡 **Chinese**
+    - ☕ **Café**
+    - 🍜 **Japanese**
+    - 🍴 **Fine Dining**
+    - 🍨 **Dessert**
