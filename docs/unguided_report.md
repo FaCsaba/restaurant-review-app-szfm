@@ -1,0 +1,3 @@
+- We want a restaurant review application.
+- It must be able to show restaurants in the users area.
+- The restaurants appear as little dots on a map. We want to be able to click on those and it should show the restaurant and its reviews.
