@@ -1,0 +1,8 @@
+Modul | ID | UC ID | Név                                         | V.  | Kifejtés                                                                                                   |
+------|----|-------|---------------------------------------------|-----|------------------------------------------------------------------------------------------------------------|
+DB    | K1 |   1   | Éttermek tárolása                           | 1.0 | Az éttermek nevét, helyzetét, típusát stb. jsonként tároljuk                                               |
+BE    | K2 |   1   | Étterem visszaadása ID alapján              | 1.0 | A BE egy REST endpoint-on az ID alapján lekért éttermet(K1) adja vissza                                    |
+BE    | K3 |   1   | Összes étterem visszaadása távolság alapján | 1.0 | A BE egy REST endpoint-on visszaadja az összes éttermet, amelyek megfelelnek egy távolsági kritériumnak    |
+FE    | K4 |   1   | Étterem lekérdezése                         | 1.0 | A FE lekérdez ID vagy távolság alapján éttermeket a BE-től                                                 |
+FE    | K5 |   1   | Térkép megjelenítése                        | 1.0 | A FE képes megjeleníteni egy térképet az OpenStreetMap API használatával                                   |
+FE    | K6 |   1   | Éttermek megjelenítése a térképen           | 1.0 | Az FE képes a K5 álatal specifikált térképen megjeleníteni a K4 által lekért éttermek helyzetét egy pinnel |
