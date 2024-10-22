@@ -1,5 +1,6 @@
 package hu.unideb.inf.restaurant.entity;
 
+import hu.unideb.inf.restaurant.entity.enums.EuropeanCountries;
 import jakarta.persistence.*;
 import lombok.*;
 
