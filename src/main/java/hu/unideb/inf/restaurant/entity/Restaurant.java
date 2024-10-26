@@ -22,13 +22,15 @@ public class Restaurant {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "location", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
     private Location location;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private RestaurantType restaurantType;
 
+    @Column(insertable = false)
+    private Double average_rating;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;

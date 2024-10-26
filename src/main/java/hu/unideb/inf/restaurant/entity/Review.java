@@ -15,6 +15,12 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = true)
+    private String review_text;
+
+    @Column(nullable = false)
+    private Integer rating;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Restaurant restaurant;
 
