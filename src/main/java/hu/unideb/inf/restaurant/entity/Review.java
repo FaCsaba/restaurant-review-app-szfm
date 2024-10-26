@@ -25,5 +25,5 @@ public class Review {
     private Restaurant restaurant;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    private Account account;
 }
