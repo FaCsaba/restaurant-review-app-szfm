@@ -22,6 +22,7 @@ public class Review {
     private Integer rating;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "id", nullable = false)
     private Restaurant restaurant;
 
     @ManyToOne(fetch = FetchType.LAZY)

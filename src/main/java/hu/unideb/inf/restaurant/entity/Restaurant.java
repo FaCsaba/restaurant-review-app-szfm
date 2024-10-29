@@ -1,5 +1,6 @@
 package hu.unideb.inf.restaurant.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import hu.unideb.inf.restaurant.entity.enums.RestaurantType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -32,7 +33,8 @@ public class Restaurant {
     @Column(insertable = false)
     private Double average_rating;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    //@JsonIgnore
     private List<Review> reviews;
 
 }
