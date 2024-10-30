@@ -12,13 +12,13 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @PostMapping("/addreview")
+    @PostMapping("/review")
     public void addReview(@RequestBody Review review) {
         reviewService.saveReview(review);
     }
 
-    @PostMapping("/deletereview")
-    public void deleteReview(@RequestParam int id) {
+    @DeleteMapping("/review")
+    public void delete(@RequestParam Integer id) {
         reviewService.deleteReview(id);
     }
 

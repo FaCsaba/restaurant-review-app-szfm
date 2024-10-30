@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import hu.unideb.inf.restaurant.entity.enums.RestaurantType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.List;
 
@@ -11,7 +12,6 @@ import java.util.List;
 @Table(name = "restaurant")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Getter
 @Setter
 public class Restaurant {
@@ -31,10 +31,11 @@ public class Restaurant {
     private RestaurantType restaurantType;
 
     @Column(insertable = false)
+    @ColumnDefault("0.0")
     private Double average_rating;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    //@JsonIgnore
+    @JsonIgnore
     private List<Review> reviews;
 
 }
