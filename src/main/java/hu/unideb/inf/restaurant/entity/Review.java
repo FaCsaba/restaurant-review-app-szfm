@@ -7,7 +7,6 @@ import lombok.*;
 @Table(name = "review")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Getter
 @Setter
 public class Review {
@@ -21,7 +20,9 @@ public class Review {
     @Column(nullable = false)
     private Integer rating;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "id", nullable = false)
     private Restaurant restaurant;
 
     @ManyToOne(fetch = FetchType.LAZY)
