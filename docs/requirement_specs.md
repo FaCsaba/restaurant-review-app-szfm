@@ -7,6 +7,6 @@ FE    | K4 |   1   | Étterem lekérdezése                         | 1.0 | A FE
 FE    | K5 |   1   | Térkép megjelenítése                        | 1.0 | A FE képes megjeleníteni egy térképet az OpenStreetMap API használatával                                        |
 FE    | K6 |   1   | Éttermek megjelenítése a térképen           | 1.0 | Az FE képes a K5 álatal specifikált térképen megjeleníteni a K4 által lekért éttermek helyzetét egy pinnel      |
 FE    | K7 |   1   | Pineken alap információk megjelenítése      | 1.0 | A pinek megynyomása után egy kis pop-overen alap információkat jelenítünk meg                                   |
-BE    | K9 |   1   | Éttermek visszaadásának szűkítése           | 1.0 | K3 képes tövábbá szűkíteni a visszatérést név és típus alapján                                                  |
-FE    | K10|   1   | Keresési oldal                              | 1.0 | Az FE képes keresni restaurantok között, és azokat között szűrni név és típus alaján                            |
-FE    | K11|   1   | Étterem részletek oldal                     | 1.0 | K2 lekérdezés után egy étterem részletek oldalon lehet megtekinteni egy éttermet és ahhoz tartozó értékeléseket |
+BE    | K8 |   1   | Éttermek visszaadásának szűkítése           | 1.0 | K3 képes tövábbá szűkíteni a visszatérést név és típus alapján                                                  |
+FE    | K9 |   1   | Keresési oldal                              | 1.0 | Az FE képes keresni restaurantok között, és azokat között szűrni név és típus alaján                            |
+FE    | K10|   1   | Étterem részletek oldal                     | 1.0 | K2 lekérdezés után egy étterem részletek oldalon lehet megtekinteni egy éttermet és ahhoz tartozó értékeléseket |
