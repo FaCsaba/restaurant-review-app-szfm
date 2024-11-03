@@ -4,7 +4,7 @@ export type Review = {
     id: ReviewId;
     rating: number;
     username: string;
-    content: string;
+    content?: string | null;
 }
 
 export type RestaurnatLocation = {
@@ -39,6 +39,7 @@ export type Restaurant = {
     location: RestaurnatLocation;
     avgRating: number;
     topReview?: Review;
+    isLiked: boolean;
 }
 
 export type RestaurantsFilter = {
@@ -73,7 +74,8 @@ export async function getRestaurants(filter?: RestaurantsFilter): Promise<Restau
                 rating: 5,
                 username: "foodie123",
                 content: "Absolutely loved the burgers! Juicy and flavorful."
-            }
+            },
+            isLiked: false,
         },
         {
             id: 2 as RestaurantId,
@@ -91,6 +93,7 @@ export async function getRestaurants(filter?: RestaurantsFilter): Promise<Restau
                 addressLine3: "Downtown LA"
             },
             avgRating: 4.8,
+            isLiked: false,
         },
         {
             id: 3 as RestaurantId,
@@ -113,7 +116,8 @@ export async function getRestaurants(filter?: RestaurantsFilter): Promise<Restau
                 rating: 4,
                 username: "healthNut",
                 content: "Great place for a healthy meal! Love the salads."
-            }
+            },
+            isLiked: false,
         },
         {
             id: 4 as RestaurantId,
@@ -130,7 +134,8 @@ export async function getRestaurants(filter?: RestaurantsFilter): Promise<Restau
                 addressLine2: "Floor 2",
                 addressLine3: "Near Millennium Park"
             },
-            avgRating: 4.7
+            avgRating: 4.7,
+            isLiked: true,
         },
         {
             id: 5 as RestaurantId,
@@ -147,7 +152,8 @@ export async function getRestaurants(filter?: RestaurantsFilter): Promise<Restau
                 addressLine2: "",
                 addressLine3: "South Congress"
             },
-            avgRating: 4.6
+            avgRating: 4.6,
+            isLiked: false,
         }
     ];
     return dummy;

@@ -8,7 +8,7 @@ import { divIcon, Map } from "leaflet";
 // but I had to do it this way because Leaflet expects an html
 // element in string and I can't manipulate the color of it
 import pin from "../../assets/map-pin.svg";
-import { RestaurantCard } from "../components/restaurant-card.component";
+import { RestaurantCard } from "../components/restaurnat-card/restaurant-card.component";
 
 export function Index() {
     const mapRef = useRef<Map>(null);
