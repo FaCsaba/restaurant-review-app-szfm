@@ -30,9 +30,13 @@ public class Restaurant {
     @Column(nullable = false)
     private RestaurantType restaurantType;
 
+    @Column(nullable = false)
+    @ColumnDefault("")
+    private String description;
+
     @Column(insertable = false)
     @ColumnDefault("0.0")
-    private Double average_rating;
+    private Double rating;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore

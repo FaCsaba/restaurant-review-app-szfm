@@ -8,7 +8,6 @@ import lombok.*;
 @Table(name = "location")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Getter
 @Setter
 public class Location {
@@ -30,13 +29,13 @@ public class Location {
     private EuropeanCountries country;
 
     @Column
-    private String add_line_1;
+    private String addLine1;
 
     @Column
-    private String add_line_2;
+    private String addLine2;
 
     @Column
-    private String add_line_3;
+    private String addLine3;
 
     @Column
     private Integer zip;

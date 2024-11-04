@@ -24,7 +24,7 @@ public class ReviewService {
         Integer restaurant_id = review.getRestaurant().getId();
         Restaurant restaurant = restaurantRepository.findById(restaurant_id)
                 .orElseThrow(() -> new RuntimeException("Restaurant not found!"));
-        restaurant.setAverage_rating(addToAverageRating(restaurant, review.getRating()));
+        restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
         restaurantRepository.save(restaurant);
 
         review.setRestaurant(restaurant);
@@ -37,7 +37,7 @@ public class ReviewService {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Review not found!"));
         Restaurant restaurant = review.getRestaurant();
-        restaurant.setAverage_rating(subtractFromAverageRating(restaurant, review.getRating()));
+        restaurant.setRating(subtractFromAverageRating(restaurant, review.getRating()));
         restaurantRepository.save(restaurant);
 
         reviewRepository.delete(review);
@@ -47,7 +47,7 @@ public class ReviewService {
     private double addToAverageRating(Restaurant restaurant, Integer newRating) {
         List<Review> reviews = reviewRepository.findByRestaurant(restaurant);
         int numberOfReviews = reviews.size();
-        double currentAverage = restaurant.getAverage_rating();
+        double currentAverage = restaurant.getRating();
         return (currentAverage * numberOfReviews + newRating) / (numberOfReviews + 1);
     }
 
@@ -55,7 +55,7 @@ public class ReviewService {
     private double subtractFromAverageRating(Restaurant restaurant, Integer oldRating) {
         List<Review> reviews = reviewRepository.findByRestaurant(restaurant);
         int numberOfReviews = reviews.size();
-        double currentAverage = restaurant.getAverage_rating();
+        double currentAverage = restaurant.getRating();
         if(numberOfReviews < 2) return 0;
         return (currentAverage * numberOfReviews - oldRating) / (numberOfReviews - 1);
     }
