@@ -27,6 +27,7 @@ public class ReviewController {
     @GetMapping("/reviews")
     public List<ReviewDto> getAllReviews() {
         //TODO
+        //userhez tartozo összes lista
         return null;
     }
 }
