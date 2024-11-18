@@ -1,7 +1,9 @@
 package hu.unideb.inf.restaurant.service;
 
+import hu.unideb.inf.restaurant.data.ReviewDto;
 import hu.unideb.inf.restaurant.entity.Restaurant;
 import hu.unideb.inf.restaurant.entity.Review;
+import hu.unideb.inf.restaurant.mapper.ReviewMapper;
 import hu.unideb.inf.restaurant.repository.RestaurantRepository;
 import hu.unideb.inf.restaurant.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,13 @@ public class ReviewService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
+    @Autowired
+    ReviewMapper reviewMapper;
+
     @Transactional
-    public void saveReview(Review review) {
-        Integer restaurant_id = review.getRestaurant().getId();
-        Restaurant restaurant = restaurantRepository.findById(restaurant_id)
-                .orElseThrow(() -> new RuntimeException("Restaurant not found!"));
+    public void saveReview(ReviewDto dto) {
+        Review review = reviewMapper.reviewDtoToReview(dto);
+        Restaurant restaurant = review.getRestaurant();
         restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
         restaurantRepository.save(restaurant);
 
@@ -58,6 +62,11 @@ public class ReviewService {
         double currentAverage = restaurant.getRating();
         if(numberOfReviews < 2) return 0;
         return (currentAverage * numberOfReviews - oldRating) / (numberOfReviews - 1);
+    }
+
+    public List<ReviewDto> getAllReviews() {
+        //TODO
+        return null;
     }
 }
 

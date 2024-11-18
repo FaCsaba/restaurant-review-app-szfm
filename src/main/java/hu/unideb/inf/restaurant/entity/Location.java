@@ -28,13 +28,13 @@ public class Location {
     @Column
     private EuropeanCountries country;
 
-    @Column
+    @Column(name = "add_line_1")
     private String addLine1;
 
-    @Column
+    @Column(name = "add_line_2")
     private String addLine2;
 
-    @Column
+    @Column(name = "add_line_3")
     private String addLine3;
 
     @Column

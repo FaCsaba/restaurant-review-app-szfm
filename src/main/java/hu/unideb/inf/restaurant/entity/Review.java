@@ -15,12 +15,13 @@ public class Review {
     private Integer id;
 
     @Column(nullable = true)
-    private String review_text;
+    private String reviewText;
 
     @Column(nullable = false)
     private Integer rating;
 
 
+    //TODO
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", referencedColumnName = "id", nullable = false)
     private Restaurant restaurant;

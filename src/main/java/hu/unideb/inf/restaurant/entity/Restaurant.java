@@ -31,8 +31,8 @@ public class Restaurant {
     private RestaurantType restaurantType;
 
     @Column(nullable = false)
-    @ColumnDefault("")
-    private String description;
+    @ColumnDefault("'No Description'")
+    private String description = "No description";
 
     @Column(insertable = false)
     @ColumnDefault("0.0")
