@@ -22,21 +22,18 @@ public class RestaurantService {
     RestaurantMapper restaurantMapper;
 
     public RestaurantAndReviewsDto getRestaurantById(Integer id) {
-        /*
-        RestaurantMapper mapper = new RestaurantMapper();
-        return mapper.apply(restaurantRepository.getRestaurantById(id));
-         */
-
         return restaurantMapper.restaurantToRestaurantDto(
-                restaurantRepository.getRestaurantById(id));
+                restaurantRepository.getRestaurantById(id)
+        );
     }
 
     public  List<RestaurantAndReviewsDto> findByAny(String name, RestaurantType type, String description) {
-        List<Restaurant> szuro = restaurantRepository.findAll();
-        szuro= szuro.stream()
-                .filter(x -> name==null||x.getName().equals(name)).filter(x -> type==null||x.getRestaurantType().equals(type))
-                .filter(x -> description==null||x.getDescription().equals(description)).toList();
+        List<Restaurant> entities = restaurantRepository.findAll();
+        entities = entities.stream()
+                .filter(x -> name == null || x.getName().equals(name))
+                .filter(x -> type == null || x.getRestaurantType().equals(type))
+                .filter(x -> description == null || x.getDescription().equals(description)).toList();
 
-        return restaurantMapper.restaurantListToRestaurantDtoList(szuro);
+        return restaurantMapper.restaurantListToRestaurantDtoList(entities);
     }
 }

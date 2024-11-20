@@ -174,4 +174,8 @@ psd
 thumb
 sketch
 
+# Database
+restaurant.mv.db
+restaurant.trace.db
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,react,maven

@@ -8,5 +8,5 @@ import java.io.Serializable;
 public record ReviewDto(String reviewText,
                         Integer rating,
                         String restaurantName,
-                        String username) implements Serializable {
+                        String username){
   }
