@@ -21,3 +21,30 @@ A high level overview on how our architecture looks like.
 - `app.tsx`: the application entry point
 - `main.tsx`: react entry point
 - `index.html`: first page loaded by the browser
+
+### Example Observable
+```
+@startuml
+interface Observee<MessageType> {
+  +default void subscribe(Observer<MessageType> o) { observers.add(o); }
+  +default void unsubscribe(Observer<MessageType> o) { observers.remove(o); }
+  +default void notify(MessageType msg) { for(Observer<MessageType> o : observers) o.receive(MessageType msg) }
+}
+
+interface Observer<MessageType> {
+  +abstract void receive(MessageType msg);
+  +abstract void onError(String errorMessage);
+  +abstract void end();
+}
+
+Observee "0..1" o-right-> "0..n" Observer : -observers
+
+RestaurantFilterek .up.|> Observee
+RestaurantLekero .up.|> Observer
+FilterGomb .up.|> Observer
+
+Main ..> RestaurnatFilterek : 1: <<create>> RestaurnatFilterDb; 4: <<subscribe>> restaurnatLekero; 5: <<subscribe>> filterGomb
+Main ..> ResturantLekero : 2: <<create>> restaurnatLekero
+Main ..> FilterGomb : 3: <<create>> filterGomb
+@enduml
+```
