@@ -1,0 +1,30 @@
+button {
+    cursor: pointer;
+}
+
+.button {
+    background-color: var(--bg);
+    color: var(--fg);
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    font-size: 20px;
+}
+
+.button.flat {
+    outline: solid 1px var(--secondary);
+}
+
+.button:disabled {
+    background-color: var(--disabled-bg);
+}
+
+.button:focus-visible {
+    outline: solid 3px var(--primary-bg);
+}
+
+.selected,
+.button:active {
+    background-color: var(--primary-bg);
+    color: var(--primary-fg);
+}
