@@ -2,7 +2,7 @@ name: Test Restaurant review app
 on: 
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
