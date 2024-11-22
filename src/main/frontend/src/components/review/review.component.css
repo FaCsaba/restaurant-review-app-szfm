@@ -1,0 +1,15 @@
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-name {
+    font-size: 16px;
+    font-weight: 700;
+}
