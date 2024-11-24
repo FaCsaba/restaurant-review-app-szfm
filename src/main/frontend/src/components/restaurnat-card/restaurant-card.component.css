@@ -1,0 +1,73 @@
+.leaflet-popup {
+    background: var(--secondary-frosted);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 4px var(--box-shadow);
+    border-radius: 15px;
+}
+
+.leaflet-popup-tip-container {
+    display: none;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 0;
+    background: unset;
+    box-shadow: unset;
+}
+
+.leaflet-popup-content {
+    margin: unset;
+}
+
+.restaurant-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--bg);
+    box-shadow: 0 4px 4px var(--box-shadow);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.restaurant-card-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.restaurant-card-name-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.restaurant-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.restaurant-card-button-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.restaurant-card-button {
+    width: 100%;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    margin-left: auto;
+}
+
+.liked {
+    color: var(--danger);
+}
+
+.restaurant-card-top-review {
+    padding: 20px;
+}
