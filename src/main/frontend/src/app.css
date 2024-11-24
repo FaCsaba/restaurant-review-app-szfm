@@ -12,6 +12,10 @@
     --box-shadow: #00000026;
 }
 
+.icon {
+    font-size: 24px;
+}
+
 .sub-icon {
     color: var(--sub-icon);
 }
