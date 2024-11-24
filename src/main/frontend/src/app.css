@@ -5,7 +5,7 @@
     --primary-bg: #37B6DA;
     --primary-fg: #FFFFFF;
     --secondary: #AFC1AF;
-    --secondary-frosted: #e7f3e7cc;
+    --secondary-frosted: #e7f3e799;
     --danger: #ff0000;
     --sub: #929292;
     --sub-icon: #B4B4B4;
@@ -91,7 +91,7 @@ td {
     font-weight: inherit;
     font-style: inherit;
     font-size: 100%;
-    font-family: inherit;
+    font-family: 'Infra', sans-serif;
     vertical-align: baseline;
 }
 
