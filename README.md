@@ -19,9 +19,7 @@ Follow these instructions to set up and run the app locally for development or t
 Ensure you have the following installed:
 - [Java 23](https://www.oracle.com/java/technologies/downloads/)
 - Spring Boot 3.3.4
-- Spring boot AOP
 - Maven latest
-- JWT 0.11.5
 
 ### 🏃Build and Run the App:
 ```sh
