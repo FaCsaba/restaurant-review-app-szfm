@@ -175,6 +175,8 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/intellij,java,react,maven
 
+# Database
 *.db
+
+# End of https://www.toptal.com/developers/gitignore/api/intellij,java,react,maven

@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "account")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Getter
 @Setter
 public class Account {
