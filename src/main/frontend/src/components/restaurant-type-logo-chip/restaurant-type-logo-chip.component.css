@@ -1,0 +1,7 @@
+.restaurant-type-logo-chip {
+    padding: 2px 5px;
+    background-color: var(--primary-bg);
+    color: var(--primary-fg);
+    border-radius: 10px;
+    height: max-content;
+}

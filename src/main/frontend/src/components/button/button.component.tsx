@@ -1,9 +1,6 @@
+import { cn } from "../../utils/classname";
 import "./button.component.css";
 
-function cn(base: string, other?: string) {
-    return [base, other].join(" ");
-}
-
-export function Button({ children, className }: React.HTMLAttributes<HTMLButtonElement>) {
-    return <button className={cn("button", className)}><>{children}</></button>
+export function Button({ children, className, ...other }: React.HTMLAttributes<HTMLButtonElement>) {
+    return <button className={cn("button", className)} {...other}><>{children}</></button>
 }

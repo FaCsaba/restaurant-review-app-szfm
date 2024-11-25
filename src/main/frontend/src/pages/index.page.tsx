@@ -9,6 +9,7 @@ import { divIcon, Map } from "leaflet";
 // element in string and I can't manipulate the color of it
 import pin from "../../assets/map-pin.svg";
 import { RestaurantCard } from "../components/restaurnat-card/restaurant-card.component";
+import { SearchStrip } from "../components/search-strip/search-strip.component";
 
 export function Index() {
     const mapRef = useRef<Map>(null);
@@ -32,18 +33,21 @@ export function Index() {
     if (isErrorFetchingRestaurants) return <p>Failed to fetch restaurants {(errorFetchingRestaurants as Error).message}</p>
 
     return (
-        <MapContainer center={[coords.latitude, coords.longitude]} zoom={18} ref={mapRef} zoomControl={false}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {restaurants.map((restaurant, i) =>
-                <Marker key={i}
-                    position={[restaurant.location.latitude, restaurant.location.longitude]}
-                    icon={divIcon({ html: pin, className: "pin", iconSize: [32, 32], popupAnchor: [0, -32] })}
-                >
-                    <RestaurantCard restaurant={restaurant} />
-                </Marker>)}
-        </MapContainer>
+        <>
+            <SearchStrip />
+            <MapContainer center={[coords.latitude, coords.longitude]} zoom={18} ref={mapRef} zoomControl={false}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {restaurants.map((restaurant, i) =>
+                    <Marker key={i}
+                        position={[restaurant.location.latitude, restaurant.location.longitude]}
+                        icon={divIcon({ html: pin, className: "pin", iconSize: [32, 32], popupAnchor: [0, -32] })}
+                    >
+                        <RestaurantCard restaurant={restaurant} />
+                    </Marker>)}
+            </MapContainer>
+        </>
     );
 }

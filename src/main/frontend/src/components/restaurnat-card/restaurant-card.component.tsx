@@ -1,7 +1,7 @@
 import { Popup } from "react-leaflet";
 import { Restaurant } from "../../api/restaurants";
 import "./restaurant-card.component.css";
-import { RestaurantTypeChip } from "../restaurant-type-chip/restaurant-type-chip.component";
+import { RestaurantTypeLogoChip } from "../restaurant-type-logo-chip/restaurant-type-logo-chip.component";
 import { Button } from "../button/button.component";
 import { ReviewComponent } from "../review/review.component";
 
@@ -16,7 +16,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
                 <div className="restaurant-card-heading">
                     <div className="restaurant-card-name-row">
                         <h2 className="restaurant-name">{restaurant.name}</h2>
-                        <RestaurantTypeChip restaurantType={restaurant.restaurantType} />
+                        <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
                         <LikeToggle isLiked={restaurant.isLiked} />
                     </div>
                     <div className="sub"><i className="bi bi-star-fill sub-icon" /> {restaurant.avgRating}</div>

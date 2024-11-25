@@ -1,20 +1,14 @@
+import { useState } from "react";
 import { RestaurantType } from "../../api/restaurants";
+import { Button } from "../button/button.component";
+import { getChipLogoBasedOnRestaurantType, getChipNameBasedOnRestaurantType } from "../../utils/chips";
+import { cn } from "../../utils/classname";
 import "./restaurant-type-chip.component.css";
 
-function getChipLogoBasedOnRestaurantType(restaurantType: RestaurantType): string {
-    switch (restaurantType) {
-        case RestaurantType.FastFood: return "🍔";
-        case RestaurantType.Healthy: return "🥗";
-        case RestaurantType.American: return "🍟";
-        case RestaurantType.Chinese: return "🥡";
-        case RestaurantType.Cafe: return "☕";
-        case RestaurantType.Japanese: return "🍜";
-        case RestaurantType.FineDining: return "🍴";
-        case RestaurantType.Dessert: return "🍨";
-        default: throw new Error("Unreachable: Got " + restaurantType + " while trying to get chip logo.");
-    }
-}
-
 export function RestaurantTypeChip({ restaurantType }: { restaurantType: RestaurantType }) {
-    return <div className="restaurant-type-chip">{getChipLogoBasedOnRestaurantType(restaurantType)}</div>
+    const [isActive, setIsActive] = useState(false);
+
+    return <Button onClick={() => setIsActive(a => !a)} className={cn("restaurant-type-chip", isActive ? "selected" : "")}>
+        {getChipLogoBasedOnRestaurantType(restaurantType)} {getChipNameBasedOnRestaurantType(restaurantType)}
+    </Button>
 }

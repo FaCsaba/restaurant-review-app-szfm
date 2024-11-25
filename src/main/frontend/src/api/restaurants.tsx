@@ -19,14 +19,14 @@ export type RestaurnatLocation = {
 }
 
 export enum RestaurantType {
-    FastFood,
-    Healthy,
-    American,
-    Chinese,
-    Cafe,
-    Japanese,
-    FineDining,
-    Dessert,
+    FastFood = "FAST_FOOD",
+    Healthy = "HEALTHY",
+    American = "AMERICAN",
+    Chinese = "CHINESE",
+    Cafe = "CAFE",
+    Japanese = "JAPANESE",
+    FineDining = "FINE_DINING",
+    Dessert = "DESSERT",
 }
 
 export type RestaurantId = number & { __type: "restaurant" };
