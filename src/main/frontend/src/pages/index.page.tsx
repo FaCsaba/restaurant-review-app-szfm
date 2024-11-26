@@ -8,27 +8,19 @@ import { divIcon, Map } from "leaflet";
 // but I had to do it this way because Leaflet expects an html
 // element in string and I can't manipulate the color of it
 import pin from "../../assets/map-pin.svg";
-import { RestaurantCard } from "../components/restaurnat-card/restaurant-card.component";
+import { RestaurantCard } from "../components/restaurant-card/restaurant-card.component";
 import { SearchStrip } from "../components/search-strip/search-strip.component";
+import { useUserLocation } from "../queries/user-location.query";
+import { useRestaurants } from "../queries/restaurants.query";
+import { useFilterStore } from "../stores/filter.store";
+import { useShallow } from "zustand/shallow";
 
 export function Index() {
     const mapRef = useRef<Map>(null);
+    const { search, types, coords } = useFilterStore(useShallow((state) => ({ search: state.search, types: state.types, coords: state.coords })));
+    useUserLocation(mapRef);
 
-    const { data: { coords } } = useQuery({
-        queryKey: ['userLocation'],
-        queryFn: async () => new Promise<GeolocationPosition>((res, rej) => {
-            navigator.geolocation.getCurrentPosition((a) => { console.log(a); res(a) }, rej);
-        }),
-        onSuccess: ({ coords }) =>
-            mapRef.current?.flyTo([coords.latitude, coords.longitude], 18, { animate: false }),
-        initialData: { coords: { latitude: 40.7128, longitude: -74.0060 } } as GeolocationPosition,
-        refetchOnWindowFocus: false,
-    });
-    const { isError: isErrorFetchingRestaurants, error: errorFetchingRestaurants, data: restaurants } = useQuery({
-        queryKey: ['getRestaurants', coords],
-        queryFn: () => getRestaurants({ coords: coords }),
-        initialData: [],
-    });
+    const { isError: isErrorFetchingRestaurants, error: errorFetchingRestaurants, data: restaurants } = useRestaurants({ coords, search, types });
 
     if (isErrorFetchingRestaurants) return <p>Failed to fetch restaurants {(errorFetchingRestaurants as Error).message}</p>
 

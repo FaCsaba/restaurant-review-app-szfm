@@ -6,6 +6,6 @@ import "./search-strip.component.css";
 export function SearchStrip() {
     return <div className="search-strip">
         <SearchBar />
-        {Object.values(RestaurantType).map(t => <RestaurantTypeChip restaurantType={t} />)}
+        {Object.values(RestaurantType).map((t, i) => <RestaurantTypeChip key={i} restaurantType={t} />)}
     </div>
 }
