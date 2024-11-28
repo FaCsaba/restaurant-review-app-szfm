@@ -9,14 +9,13 @@ import hu.unideb.inf.restaurant.repository.RestaurantRepository;
 import hu.unideb.inf.restaurant.util.DistanceCalc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService {
+   private final static double filterMaxDistance = 10;
 
     @Autowired
     private RestaurantRepository restaurantRepository;
@@ -31,14 +30,13 @@ public class RestaurantService {
         );
     }
 
-    public  List<RestaurantAndReviewsDto> findByAny(String name, RestaurantType type, String description, CoordinatesDto coord) {
+    public  List<RestaurantAndReviewsDto> findByFilter(String search, List<RestaurantType> type, CoordinatesDto coords) {
         List<Restaurant> entities = restaurantRepository.findAll();
         entities = entities.stream()
-                .filter(x -> name == null || x.getName().equals(name))
-                .filter(x -> type == null || x.getRestaurantType().equals(type))
-                .filter(x -> description == null || x.getDescription().equals(description))
-                .filter(x -> coord == null || x.getLocation().getLatitude().equals(coord.latitude()) &&
-                        x.getLocation().getLongitude().equals(coord.longitude()))
+                .filter(x -> search == null || x.getName().contains(search) || x.getDescription().equals(search))
+                .filter(x -> type == null || type.isEmpty() || type.contains(x.getRestaurantType()))
+                .filter(x -> DistanceCalc.calculate(coords.latitude(), x.getLocation().getLatitude(),
+                                coords.longitude(), x.getLocation().getLongitude()) <= filterMaxDistance)
                 .toList();
 
         return restaurantMapper.restaurantListToRestaurantDtoList(entities);
