@@ -9,10 +9,12 @@ button {
     border-radius: 15px;
     border: none;
     font-size: 20px;
+    box-shadow: 0 4px 4px var(--box-shadow);
 }
 
 .button.flat {
     outline: solid 1px var(--secondary);
+    box-shadow: none;
 }
 
 .button:disabled {
