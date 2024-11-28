@@ -42,13 +42,15 @@ export type Restaurant = {
     isLiked: boolean;
 }
 
+export type CoordsDto = {
+    latitude: number;
+    longitude: number;
+}
+
 export type RestaurantsFilter = {
     types?: RestaurantType[];
     search?: string;
-    coords?: {
-        latitude: number;
-        longitude: number;
-    };
+    coords?: CoordsDto;
 }
 
 export async function getRestaurants(filter?: RestaurantsFilter): Promise<Restaurant[]> {
