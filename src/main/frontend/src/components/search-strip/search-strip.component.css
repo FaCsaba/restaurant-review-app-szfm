@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: row;
     gap: 8px;
-    width: calc(100vw - 40px);
+    width: calc(100% - 40px);
 }
 
 .search-strip-filter-container {
@@ -17,4 +17,9 @@
 
 .search-strip-filter-container::-webkit-scrollbar {
     display: none;
+}
+
+.search-strip.flat {
+    flex-direction: column;
+    position: unset;
 }

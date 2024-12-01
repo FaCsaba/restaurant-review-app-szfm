@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import { getRestaurants } from "../api/restaurants";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "./index.css";
 import { useRef } from "react";
@@ -14,20 +12,24 @@ import { useUserLocation } from "../queries/user-location.query";
 import { useRestaurants } from "../queries/restaurants.query";
 import { useFilterStore } from "../stores/filter.store";
 import { useShallow } from "zustand/shallow";
+import { useUIStateStore } from "../stores/state.store";
+import { SearchOverlay } from "../components/search-overlay/search-overlay.component";
 
 export function Index() {
     const mapRef = useRef<Map>(null);
-    const { search, types, coords } = useFilterStore(useShallow((state) => ({ search: state.search, types: state.types, coords: state.coords })));
+    const filter = useFilterStore(useShallow((state) => ({ search: state.search, types: state.types, coords: state.coords })));
+    const isSearching = useUIStateStore((state) => state.isSearching)
     useUserLocation(mapRef);
 
-    const { isError: isErrorFetchingRestaurants, error: errorFetchingRestaurants, data: restaurants } = useRestaurants({ coords, search, types });
+    const { isError: isErrorFetchingRestaurants, error: errorFetchingRestaurants, data: restaurants } = useRestaurants(filter);
 
     if (isErrorFetchingRestaurants) return <p>Failed to fetch restaurants {(errorFetchingRestaurants as Error).message}</p>
 
     return (
         <>
-            <SearchStrip />
-            <MapContainer center={[coords.latitude, coords.longitude]} zoom={18} ref={mapRef} zoomControl={false}>
+            { !isSearching && <SearchStrip />}
+            { isSearching && <SearchOverlay restaurants={restaurants} />}
+            <MapContainer center={[filter.coords.latitude, filter.coords.longitude]} zoom={18} ref={mapRef} zoomControl={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -12,7 +12,7 @@ interface FilterState {
 }
 
 export const useFilterStore = create<FilterState>((set) => ({
-    coords: { latitude: 40.7128, longitude: -74.0060 },
+    coords: { latitude: 47.5316, longitude: 21.6273 },
     types: [],
     setCoords: (coords: CoordsDto) => set({ coords }),
     setSearch: (search?: string) => set({ search }),
