@@ -42,7 +42,7 @@
     gap: 6px;
 }
 
-.restaurant-name {
+.restaurant-card-name {
     font-size: 20px;
     font-weight: 700;
     margin: 0;
@@ -56,16 +56,6 @@
 
 .restaurant-card-button {
     width: 100%;
-}
-
-.like-button {
-    background: none;
-    border: none;
-    margin-left: auto;
-}
-
-.liked {
-    color: var(--danger);
 }
 
 .restaurant-card-top-review {

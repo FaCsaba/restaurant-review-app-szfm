@@ -1,0 +1,9 @@
+.like-button {
+    background: none;
+    border: none;
+    margin-left: auto;
+}
+
+.liked {
+    color: var(--danger);
+}

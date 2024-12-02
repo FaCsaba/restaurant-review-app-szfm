@@ -4,10 +4,7 @@ import "./restaurant-card.component.css";
 import { RestaurantTypeLogoChip } from "../restaurant-type-logo-chip/restaurant-type-logo-chip.component";
 import { Button } from "../button/button.component";
 import { ReviewComponent } from "../review/review.component";
-
-function LikeToggle({ isLiked }: { isLiked: boolean }) {
-    return <button className="like-button">{isLiked ? <i className="bi bi-heart-fill danger" /> : <i className="bi bi-heart sub-icon" />}</button>;
-}
+import { LikeToggle } from "../like-toggle/like-toggle.component";
 
 export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
     return (
@@ -15,7 +12,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
             <div className="restaurant-card-info">
                 <div className="restaurant-card-heading">
                     <div className="restaurant-card-name-row">
-                        <h2 className="restaurant-name">{restaurant.name}</h2>
+                        <h2 className="restaurant-card-name">{restaurant.name}</h2>
                         <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
                         <LikeToggle isLiked={restaurant.isLiked} />
                     </div>

@@ -40,6 +40,7 @@ export type Restaurant = {
     avgRating: number;
     topReview?: Review;
     isLiked: boolean;
+    reviews: Review[];
 }
 
 export type CoordsDto = {
