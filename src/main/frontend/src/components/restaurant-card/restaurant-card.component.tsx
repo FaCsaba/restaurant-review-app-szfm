@@ -5,8 +5,11 @@ import { RestaurantTypeLogoChip } from "../restaurant-type-logo-chip/restaurant-
 import { Button } from "../button/button.component";
 import { ReviewComponent } from "../review/review.component";
 import { LikeToggle } from "../like-toggle/like-toggle.component";
+import { useUIStateStore } from "../../stores/state.store";
 
 export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
+    const setSelectedRestaurant = useUIStateStore((state) => state.setSelectedRestaurant);
+
     return (
         <Popup keepInView closeButton={false} autoPan minWidth={300}>
             <div className="restaurant-card-info">
@@ -21,7 +24,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
                 </div>
                 <div className="restaurant-card-button-row">
                     <Button className="flat restaurant-card-button">Review</Button>
-                    <Button className="flat restaurant-card-button">Learn more</Button>
+                    <Button className="flat restaurant-card-button" onClick={() => {console.log("asdf"); setSelectedRestaurant(restaurant)}}>Learn more</Button>
                 </div>
             </div>
             {restaurant.topReview ?
