@@ -7,6 +7,7 @@ import "./search-overlay.component.css";
 
 export function SearchOverlay({ restaurants }: { restaurants: Restaurant[] }) {
     const setIsSearching = useUIStateStore((state) => state.setIsSearching);
+    const setSelectedRestaurant = useUIStateStore((state) => state.setSelectedRestaurant);
 
     return <section className="search-overlay">
         <div>
@@ -19,7 +20,7 @@ export function SearchOverlay({ restaurants }: { restaurants: Restaurant[] }) {
         <div className="restaurant-search-restaurants">
             {restaurants.map((restaurant, i) => <div key={i} className="restaurant-search">
                 <div className="restaurant-search-name-row">
-                    <h2 className="restaurant-search-name">{restaurant.name}</h2>
+                    <h2 className="restaurant-search-name" onClick={() => setSelectedRestaurant(restaurant)}>{restaurant.name}</h2>
                     <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
                     <LikeToggle isLiked={restaurant.isLiked} />
                 </div>
