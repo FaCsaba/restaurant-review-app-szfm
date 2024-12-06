@@ -16,6 +16,10 @@
     font-size: 24px;
 }
 
+.icon-button {
+    cursor: pointer;
+}
+
 .sub-icon {
     color: var(--sub-icon);
 }

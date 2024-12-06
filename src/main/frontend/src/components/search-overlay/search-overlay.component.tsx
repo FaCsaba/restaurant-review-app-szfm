@@ -10,10 +10,8 @@ export function SearchOverlay({ restaurants }: { restaurants: Restaurant[] }) {
     const setSelectedRestaurant = useUIStateStore((state) => state.setSelectedRestaurant);
 
     return <section className="search-overlay">
-        <div>
-            <button onClick={() => setIsSearching(false)}>
-                <i className="bi bi-x" />
-            </button>
+        <div className="search-overlay-header">
+            <i className="bi bi-x icon icon-button" onClick={() => setIsSearching(false)} />
             Restaurants near me
         </div>
         <SearchStrip className="flat" />

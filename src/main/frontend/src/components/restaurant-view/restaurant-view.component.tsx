@@ -10,9 +10,7 @@ export function RestaurantView({ restaurant }: { restaurant: Restaurant }) {
     const setSelectedRestaurant = useUIStateStore((state) => state.setSelectedRestaurant);
 
     return <section className="restaurant-view">
-        <button onClick={() => setSelectedRestaurant()}>
-            <i className="bi bi-x" />
-        </button>
+        <i className="bi bi-x icon icon-button" onClick={() => setSelectedRestaurant()} />
         <div className="restaurant-view-restaurant">
             <div className="restaurant-view-heading">
                 <div className="restaurant-view-name-row">
@@ -20,15 +18,15 @@ export function RestaurantView({ restaurant }: { restaurant: Restaurant }) {
                     <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
                     <LikeToggle isLiked={restaurant.isLiked} />
                 </div>
-                <div className="sub"><i className="bi bi-star-fill sub-icon" /> {restaurant.avgRating}</div>
-                <div className="sub"><i className="bi bi-star-fill sub-icon" /> {restaurant.location.addressLine1}</div>
+                <div className="sub"><i className="bi bi-star-fill sub-icon" /> {restaurant.rating}</div>
+                <div className="sub"><i className="bi bi-geo-alt-fill sub-icon" /> {restaurant.location.addLine1}</div>
             </div>
             <p className="restaurant-view-description">{restaurant.description}</p>
         </div>
 
         <div className="restaurant-view-review">
             <h2 className="restaurant-view-review-header">Reviews</h2>
-            <ReviewInput  />
+            <ReviewInput />
             {restaurant.reviews.map((review) => <ReviewComponent key={review.id} review={review} />)}
         </div>
 

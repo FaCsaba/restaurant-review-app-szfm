@@ -35,8 +35,15 @@
     font-size: 20px;
     font-weight: 700;
     margin: 0;
+    cursor: pointer;
 }
 
 .restaurant-search-description {
     font-size: 20px;
+}
+
+.search-overlay-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }

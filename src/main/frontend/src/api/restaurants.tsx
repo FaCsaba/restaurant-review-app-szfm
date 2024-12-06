@@ -13,9 +13,9 @@ export type RestaurnatLocation = {
     country: string;
     city: string;
     zip: string;
-    addressLine1: string;
-    addressLine2: string;
-    addressLine3: string;
+    addLine1: string;
+    addLine2: string;
+    addLine3: string;
 }
 
 export enum RestaurantType {
@@ -37,7 +37,7 @@ export type Restaurant = {
     description: string;
     restaurantType: RestaurantType;
     location: RestaurnatLocation;
-    avgRating: number;
+    rating: number;
     topReview?: Review;
     isLiked: boolean;
     reviews: Review[];

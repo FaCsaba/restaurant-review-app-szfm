@@ -16,9 +16,8 @@ export function SearchBar({ className, ...other }: React.HTMLAttributes<HTMLInpu
         setSearchFilter(search);
     }
 
-
     return <form className={cn("search-bar", className)} onSubmit={onSubmit}>
-        <i className="bi bi-search icon" />
+        <i className="bi bi-search icon icon-button" onClick={() => setIsSearching(true)} />
         <input
             className="search-bar-input"
             type="search"
