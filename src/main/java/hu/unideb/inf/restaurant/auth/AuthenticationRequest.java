@@ -14,5 +14,5 @@ public class AuthenticationRequest {
 
     private String username;
 
-    String password;
+    private String password;
 }

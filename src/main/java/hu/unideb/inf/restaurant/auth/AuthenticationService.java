@@ -3,12 +3,10 @@ package hu.unideb.inf.restaurant.auth;
 import hu.unideb.inf.restaurant.config.JwtService;
 import hu.unideb.inf.restaurant.entity.Account;
 import hu.unideb.inf.restaurant.entity.enums.Role;
-import hu.unideb.inf.restaurant.repository.UserRepository;
+import hu.unideb.inf.restaurant.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +15,20 @@ import org.springframework.stereotype.Service;
 
 public class AuthenticationService {
 
-    private final UserRepository repository;
+    private final AccountRepository repository;
     private final PasswordEncoder encoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user= Account.builder()
+        var user = Account.builder()
                 .username(request.getUsername())
                 .password(encoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
         repository.save(user);
 
-        var jwtToken=jwtService.generateToken((UserDetails) user);
+        var jwtToken = jwtService.generateToken(user);
         return  AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -44,7 +42,7 @@ public class AuthenticationService {
 
         var user =repository.findByUsername(request.getUsername()).orElseThrow();
 
-        var jwtToken=jwtService.generateToken((UserDetails) user);
+        var jwtToken=jwtService.generateToken(user);
         return  AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

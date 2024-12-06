@@ -1,6 +1,6 @@
 package hu.unideb.inf.restaurant.config;
 
-import hu.unideb.inf.restaurant.repository.UserRepository;
+import hu.unideb.inf.restaurant.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository repository;
+    private final AccountRepository repository;
 
     @Bean
     public UserDetailsService userDetailsService() {
