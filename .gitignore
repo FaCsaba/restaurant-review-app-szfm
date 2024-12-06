@@ -168,6 +168,7 @@ logs
 **/*.back.*
 
 node_modules
+dist
 bower_components
 
 *.sublime*
@@ -175,5 +176,9 @@ bower_components
 psd
 thumb
 sketch
+
+
+# Database
+*.db
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,react,maven

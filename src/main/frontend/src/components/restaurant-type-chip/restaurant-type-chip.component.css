@@ -1,0 +1,4 @@
+.restaurant-type-chip {
+    width: max-content;
+    flex-shrink: 0;
+}

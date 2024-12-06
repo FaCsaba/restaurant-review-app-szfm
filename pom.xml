@@ -36,13 +36,18 @@
 		</developer>
 	</developers>
 	<properties>
+		<java.version>23</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<junit.jupiter.version>5.10.2</junit.jupiter.version>
 		<tinylog.version>2.7.0</tinylog.version>
-		<java.version>23</java.version>
+		<org.mapstruct.version>1.6.2</org.mapstruct.version>
 		<maven.compiler.proc>full</maven.compiler.proc>
 		<io.jsonwebtoken.version>0.12.3</io.jsonwebtoken.version>
+		<frontend-src-dir>${project.basedir}/src/main/frontend</frontend-src-dir>
+		<node.version>v21.7.3</node.version>
+		<yarn.version>v1.22.22</yarn.version>
+		<frontend-maven-plugin.version>1.7.6</frontend-maven-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -65,6 +70,17 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok-mapstruct-binding</artifactId>
+			<version>0.2.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -72,7 +88,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -136,6 +151,96 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${java.version}</source> <!-- depending on your project -->
+					<target>${java.version}</target> <!-- depending on your project -->
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+						<dependency>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>0.2.0</version>
+						</dependency>
+						<!-- other annotation processors -->
+					</annotationProcessorPaths>
+				</configuration>
+      </plugin>
+      <plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>${frontend-maven-plugin.version}</version>
+
+				<configuration>
+					<nodeVersion>${node.version}</nodeVersion>
+					<yarnVersion>${yarn.version}</yarnVersion>
+					<workingDirectory>${frontend-src-dir}</workingDirectory>
+					<installDirectory>${project.build.directory}</installDirectory>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>install-frontend-tools</id>
+						<goals>
+							<goal>install-node-and-yarn</goal>
+						</goals>
+					</execution>
+
+					<execution>
+						<id>yarn-install</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>build-frontend</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<arguments>build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>position-react-build</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${frontend-src-dir}/dist</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

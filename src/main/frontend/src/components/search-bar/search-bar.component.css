@@ -1,0 +1,16 @@
+.search-bar {
+    background-color: var(--bg);
+    color: var(--fg);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 4px 4px var(--box-shadow);
+}
+
+.search-bar-input {
+    border: none;
+    height: 100%;
+    font-size: 16px;
+}

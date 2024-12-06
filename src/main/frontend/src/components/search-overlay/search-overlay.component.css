@@ -1,0 +1,42 @@
+.search-overlay {
+    position: absolute;
+    padding: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(calc(100% - 40px), 400px);
+    height: calc(100% - 40px);
+
+    background-color: white;
+}
+
+.restaurant-search-restaurants {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.restaurant-search {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.restaurant-search-name-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+.restaurant-search-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.restaurant-search-description {
+    font-size: 20px;
+}
