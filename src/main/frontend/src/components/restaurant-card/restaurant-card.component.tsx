@@ -24,7 +24,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
                 </div>
                 <div className="restaurant-card-button-row">
                     <Button className="flat restaurant-card-button">Review</Button>
-                    <Button className="flat restaurant-card-button" onClick={() => {console.log("asdf"); setSelectedRestaurant(restaurant)}}>Learn more</Button>
+                    <Button className="flat restaurant-card-button" onClick={() => setSelectedRestaurant(restaurant)}>Learn more</Button>
                 </div>
             </div>
             {restaurant.topReview ?

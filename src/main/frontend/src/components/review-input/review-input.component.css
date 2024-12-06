@@ -1,0 +1,16 @@
+.golden {
+    color: gold;
+}
+
+.restaurant-review-input {
+    width: 100%;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: var(--sub);
+}
+
+.restaurant-review-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

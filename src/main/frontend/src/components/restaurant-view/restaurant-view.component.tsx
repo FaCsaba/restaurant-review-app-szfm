@@ -4,6 +4,7 @@ import { useUIStateStore } from "../../stores/state.store";
 import { RestaurantTypeLogoChip } from "../restaurant-type-logo-chip/restaurant-type-logo-chip.component";
 import { LikeToggle } from "../like-toggle/like-toggle.component";
 import { ReviewComponent } from "../review/review.component";
+import { ReviewInput } from "../review-input/review-input.component";
 
 export function RestaurantView({ restaurant }: { restaurant: Restaurant }) {
     const setSelectedRestaurant = useUIStateStore((state) => state.setSelectedRestaurant);
@@ -27,6 +28,7 @@ export function RestaurantView({ restaurant }: { restaurant: Restaurant }) {
 
         <div className="restaurant-view-review">
             <h2 className="restaurant-view-review-header">Reviews</h2>
+            <ReviewInput  />
             {restaurant.reviews.map((review) => <ReviewComponent key={review.id} review={review} />)}
         </div>
 

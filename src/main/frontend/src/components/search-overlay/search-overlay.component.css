@@ -8,7 +8,7 @@
     width: min(calc(100% - 40px), 400px);
     height: calc(100% - 40px);
 
-    background-color: white;
+    background-color: var(--bg);
 }
 
 .restaurant-search-restaurants {
