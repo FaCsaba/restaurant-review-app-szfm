@@ -42,7 +42,7 @@
 		<tinylog.version>2.7.0</tinylog.version>
 		<java.version>23</java.version>
 		<maven.compiler.proc>full</maven.compiler.proc>
-		<io.jsonwebtoken.version>0.11.5</io.jsonwebtoken.version>
+		<io.jsonwebtoken.version>0.12.3</io.jsonwebtoken.version>
 	</properties>
 	<dependencies>
 		<dependency>
