@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApiKeyConfig {
-    private static final Dotenv dotenv = Dotenv.configure().load();
+    private static final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
     public static String getJwtKey() {
         return dotenv.get("JWT_KEY");
     }

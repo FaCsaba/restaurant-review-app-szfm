@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 public record ReviewDto(String reviewText,
                         Integer rating,
-                        String restaurantName,
+                        Integer restaurantId,
+                        //TODO: security contextbol kiszedni az usernamet
                         String username){
   }

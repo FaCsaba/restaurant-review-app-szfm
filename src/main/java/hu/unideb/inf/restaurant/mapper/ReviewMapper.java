@@ -24,19 +24,19 @@ public abstract class ReviewMapper {
 
     @Mapping(source = "reviewText", target = "reviewText")
     @Mapping(source = "rating", target = "rating")
-    @Mapping(source = "restaurant.name", target = "restaurantName")
+    @Mapping(source = "restaurant.id", target = "restaurantId")
     @Mapping(source = "account.username", target = "username")
     public abstract ReviewDto reviewToReviewDto(Review review);
 
     @Mapping(source = "reviewText", target = "reviewText")
     @Mapping(source = "rating", target = "rating")
-    @Mapping(source = "restaurantName", target = "restaurant.name")
+    @Mapping(source = "restaurantId", target = "restaurant.id")
     @Mapping(source = "username", target = "account.username")
     public abstract Review reviewDtoToReview(ReviewDto reviewDto);
 
     @AfterMapping
     public void setRestaurant(@MappingTarget Review review, ReviewDto reviewDto) {
-        Restaurant restaurant = restaurantRepository.getRestaurantByName(reviewDto.restaurantName());
+        Restaurant restaurant = restaurantRepository.getRestaurantById(reviewDto.restaurantId());
         review.setRestaurant(restaurant);
     }
 
