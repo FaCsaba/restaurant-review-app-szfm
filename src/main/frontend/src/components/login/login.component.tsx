@@ -1,4 +1,3 @@
-import { FaUser, FaLock } from "react-icons/fa";
 import "./login.component.css";
 
 
@@ -11,12 +10,12 @@ const Login = () => {
             <label>Username</label>
             <div className="input-box">
                 <input type="text" placeholder="Username" required />
-                <FaUser className='icon' />
+                <i className="bi bi-person-fill"></i>
             </div>
             <label>Password</label>
             <div className="input-box">
                 <input type="password" placeholder="Password" required />
-                <FaLock className="icon" />
+                <i className="bi bi-shield-lock"></i>
             </div>
             <button type="submit">Submit</button>
             <div className="register-link">
