@@ -55,7 +55,7 @@ export type RestaurantsFilter = {
 }
 
 export async function getRestaurants(filter: RestaurantsFilter): Promise<Restaurant[]> {
-    return fetch('/api/restaurant/filter', {
+    return fetch('/api/v1/restaurant/filter', {
         body: JSON.stringify(filter),
         method: "POST",
         headers: {
