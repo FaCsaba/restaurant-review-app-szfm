@@ -20,7 +20,7 @@ export function SearchOverlay({ restaurants }: { restaurants: Restaurant[] }) {
                 <div className="restaurant-search-name-row">
                     <h2 className="restaurant-search-name" onClick={() => setSelectedRestaurant(restaurant)}>{restaurant.name}</h2>
                     <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
-                    <LikeToggle isLiked={restaurant.isLiked} />
+                    <LikeToggle restaurantId={restaurant.id} />
                 </div>
                 <p className="restaurant-search-description">{restaurant.description}</p>
             </div>)}
