@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { cn } from "../../utils/classname";
 import "./review-input.component.css";
 import { useUIStateStore } from "../../stores/state.store";
 import { useUser } from "../../queries/user.query";
+import { usePostReviewMutation } from "../../queries/restaurants.query";
+import { RestaurantId } from "../../api/restaurants";
 
-export function ReviewInput() {
+export function ReviewInput({ restaurantId }: { restaurantId: RestaurantId }) {
     const [rating, setRating] = useState(0);
+    const [reviewText, setReviewText] = useState('');
     const isReviewing = useUIStateStore((state) => state.isReviewingSelectedRestaurant);
+    const { mutate: postReview } = usePostReviewMutation();
 
     const { data: user } = useUser();
 
-    return <div className="review">
+    function onLoginSubmit(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        postReview({ restaurantId, rating, reviewText })
+    }
+
+    return <form className="review" onSubmit={onLoginSubmit}>
         <div className="review-header">
             <h3 className="review-name">{user?.username ?? "Anonymous"}</h3>
             <div className="sub">
@@ -22,10 +31,11 @@ export function ReviewInput() {
             </div>
         </div>
         <div className="restaurant-review-input-wrapper">
-            <input className="restaurant-review-input" type="text" autoFocus={isReviewing} placeholder="Leave a review..." min={5} max={256} />
+            <input className="restaurant-review-input" type="text" autoFocus={isReviewing} placeholder="Leave a review..." min={5} max={256}
+                value={reviewText} onChange={(e) => setReviewText(e.target.value)} />
             {rating > 0 &&
-                <button><i className="bi bi-chevron-right"></i></button>
+                <button type="submit"><i className="bi bi-chevron-right"></i></button>
             }
         </div>
-    </div>
+    </form>
 }
