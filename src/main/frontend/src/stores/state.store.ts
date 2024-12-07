@@ -1,13 +1,13 @@
 import { create } from "zustand";
-import { Restaurant } from "../api/restaurants";
+import { RestaurantId } from "../api/restaurants";
 
 interface UIState {
     isSearching: boolean;
-    selectedRestaurant?: Restaurant;
+    selectedRestaurantId?: RestaurantId;
     isReviewingSelectedRestaurant: boolean;
     setIsSearching: (isSearching: boolean) => void;
-    setSelectedRestaurant: (selectedRestaurant?: Restaurant) => void;
-    setReviewedRestaurant: (selectedRestaurant?: Restaurant) => void;
+    setSelectedRestaurant: (selectedRestaurantId?: RestaurantId) => void;
+    setReviewedRestaurant: (selectedRestaurantId?: RestaurantId) => void;
 }
 
 export const useUIStateStore = create<UIState>((set) => ({
@@ -15,6 +15,6 @@ export const useUIStateStore = create<UIState>((set) => ({
     selectedRestaurant: undefined,
     isReviewingSelectedRestaurant: false,
     setIsSearching: (isSearching: boolean) => set({ isSearching }),
-    setSelectedRestaurant: (selectedRestaurant?: Restaurant) => set({ selectedRestaurant, isReviewingSelectedRestaurant: false }),
-    setReviewedRestaurant: (selectedRestaurant?: Restaurant) => set({ selectedRestaurant, isReviewingSelectedRestaurant: true })
+    setSelectedRestaurant: (selectedRestaurantId?: RestaurantId) => set({ selectedRestaurantId, isReviewingSelectedRestaurant: false }),
+    setReviewedRestaurant: (selectedRestaurantId?: RestaurantId) => set({ selectedRestaurantId, isReviewingSelectedRestaurant: true })
 }));

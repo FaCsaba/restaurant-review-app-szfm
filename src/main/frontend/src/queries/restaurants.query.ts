@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getRestaurants, postReview, RestaurantId, RestaurantsFilter } from "../api/restaurants";
 
 export function useRestaurants(filter: RestaurantsFilter) {
@@ -11,9 +11,10 @@ export function useRestaurants(filter: RestaurantsFilter) {
 }
 
 export function usePostReviewMutation() {
+    const queryClient = useQueryClient();
     return useMutation({
-        mutationKey: ['getRestaurants'],
         mutationFn: ({ restaurantId, rating, reviewText }: { restaurantId: RestaurantId, rating: number, reviewText: string }) =>
-            postReview(restaurantId, rating, reviewText)
+            postReview(restaurantId, rating, reviewText),
+        onSuccess: () => queryClient.invalidateQueries(['getRestaurants'])
     })
 }

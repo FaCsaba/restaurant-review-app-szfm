@@ -16,7 +16,7 @@ export function ReviewInput({ restaurantId }: { restaurantId: RestaurantId }) {
 
     function onLoginSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        postReview({ restaurantId, rating, reviewText })
+        postReview({ restaurantId, rating, reviewText }, { onSuccess: () => { setRating(0); setReviewText('') } })
     }
 
     return <form className="review" onSubmit={onLoginSubmit}>
