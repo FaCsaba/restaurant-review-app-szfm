@@ -6,5 +6,6 @@ export function useRestaurants(filter: RestaurantsFilter) {
         queryKey: ['getRestaurants', filter],
         queryFn: () => getRestaurants(filter),
         initialData: [],
+        staleTime: 0
     });
 }

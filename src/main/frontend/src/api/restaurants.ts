@@ -39,7 +39,6 @@ export type Restaurant = {
     location: RestaurnatLocation;
     rating: number;
     topReview?: Review;
-    isLiked: boolean;
     reviews: Review[];
 }
 

@@ -18,7 +18,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
                     <div className="restaurant-card-name-row">
                         <h2 className="restaurant-card-name">{restaurant.name}</h2>
                         <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
-                        <LikeToggle isLiked={restaurant.isLiked} />
+                        <LikeToggle restaurantId={restaurant.id} />
                     </div>
                     <div className="sub"><i className="bi bi-star-fill sub-icon" /> {restaurant.rating}</div>
                     <div className="sub"><i className="bi bi-geo-alt-fill sub-icon" /> {restaurant.location.addLine1}</div>

@@ -5,7 +5,14 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Login from "./pages/login/login.component";
 import Register from "./pages/register/register.component";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 60,
+            refetchOnWindowFocus: false,
+        }
+    }
+})
 
 export function App() {
     return (
