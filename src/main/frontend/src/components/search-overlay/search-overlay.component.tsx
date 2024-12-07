@@ -18,7 +18,7 @@ export function SearchOverlay({ restaurants }: { restaurants: Restaurant[] }) {
         <div className="restaurant-search-restaurants">
             {restaurants.map((restaurant, i) => <div key={i} className="restaurant-search">
                 <div className="restaurant-search-name-row">
-                    <h2 className="restaurant-search-name" onClick={() => setSelectedRestaurant(restaurant)}>{restaurant.name}</h2>
+                    <h2 className="restaurant-search-name" onClick={() => setSelectedRestaurant(restaurant.id)}>{restaurant.name}</h2>
                     <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
                     <FavoriteToggle restaurantId={restaurant.id} />
                 </div>
