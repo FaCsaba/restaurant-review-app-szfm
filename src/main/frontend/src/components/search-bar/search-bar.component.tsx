@@ -2,7 +2,6 @@ import { FormEvent, useState } from "react";
 import { useFilterStore } from "../../stores/filter.store";
 import { useUIStateStore } from "../../stores/state.store";
 import { cn } from "../../utils/classname";
-import "./search-bar.component.css";
 
 export function SearchBar({ className, ...other }: React.HTMLAttributes<HTMLInputElement>) {
     const setIsSearching = useUIStateStore((state) => state.setIsSearching);
@@ -16,7 +15,7 @@ export function SearchBar({ className, ...other }: React.HTMLAttributes<HTMLInpu
         setSearchFilter(search);
     }
 
-    return <form className={cn("search-bar", className)} onSubmit={onSubmit}>
+    return <form className={cn("icon-input", className)} onSubmit={onSubmit}>
         <i className="bi bi-search icon icon-button" onClick={() => setIsSearching(true)} />
         <input
             className="search-bar-input"

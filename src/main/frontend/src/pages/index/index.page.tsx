@@ -2,19 +2,16 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "./index.css";
 import { useRef } from "react";
 import { divIcon, Map } from "leaflet";
-// FIXME: having a separate pin svg for map is kinda whack
-// but I had to do it this way because Leaflet expects an html
-// element in string and I can't manipulate the color of it
-import pin from "../../assets/map-pin.svg";
-import { RestaurantCard } from "../components/restaurant-card/restaurant-card.component";
-import { SearchStrip } from "../components/search-strip/search-strip.component";
-import { useUserLocation } from "../queries/user-location.query";
-import { useRestaurants } from "../queries/restaurants.query";
-import { useFilterStore } from "../stores/filter.store";
+import pin from "../../../assets/map-pin.svg";
+import { RestaurantCard } from "../../components/restaurant-card/restaurant-card.component";
+import { SearchStrip } from "../../components/search-strip/search-strip.component";
+import { useUserLocation } from "../../queries/user-location.query";
+import { useRestaurants } from "../../queries/restaurants.query";
+import { useFilterStore } from "../../stores/filter.store";
 import { useShallow } from "zustand/shallow";
-import { useUIStateStore } from "../stores/state.store";
-import { SearchOverlay } from "../components/search-overlay/search-overlay.component";
-import { RestaurantView } from "../components/restaurant-view/restaurant-view.component";
+import { useUIStateStore } from "../../stores/state.store";
+import { SearchOverlay } from "../../components/search-overlay/search-overlay.component";
+import { RestaurantView } from "../../components/restaurant-view/restaurant-view.component";
 
 export function Index() {
     const mapRef = useRef<Map>(null);
