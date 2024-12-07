@@ -17,10 +17,11 @@ export function Index() {
     const mapRef = useRef<Map>(null);
     const filter = useFilterStore(useShallow((state) => ({ search: state.search, types: state.types, coords: state.coords })));
     const isSearching = useUIStateStore((state) => state.isSearching)
-    const selectedRestaurant = useUIStateStore((state) => state.selectedRestaurant);
+    const selectedRestaurantId = useUIStateStore((state) => state.selectedRestaurantId);
     useUserLocation(mapRef);
-
+    
     const { isError: isErrorFetchingRestaurants, error: errorFetchingRestaurants, data: restaurants } = useRestaurants(filter);
+    const selectedRestaurant = restaurants.find(r => r.id === selectedRestaurantId);
 
     if (isErrorFetchingRestaurants) return <p>Failed to fetch restaurants {(errorFetchingRestaurants as Error).message}</p>
 

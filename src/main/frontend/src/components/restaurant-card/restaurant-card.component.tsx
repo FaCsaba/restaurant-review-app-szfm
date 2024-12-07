@@ -24,8 +24,8 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
                     <div className="sub"><i className="bi bi-geo-alt-fill sub-icon" /> {restaurant.location.addLine1}</div>
                 </div>
                 <div className="restaurant-card-button-row">
-                    <Button className="flat restaurant-card-button" onClick={() => setReviewedRestaurant(restaurant)}>Review</Button>
-                    <Button className="flat restaurant-card-button" onClick={() => setSelectedRestaurant(restaurant)}>Learn more</Button>
+                    <Button className="flat restaurant-card-button" onClick={() => setReviewedRestaurant(restaurant.id)}>Review</Button>
+                    <Button className="flat restaurant-card-button" onClick={() => setSelectedRestaurant(restaurant.id)}>Learn more</Button>
                 </div>
             </div>
             {restaurant.topReview ?
