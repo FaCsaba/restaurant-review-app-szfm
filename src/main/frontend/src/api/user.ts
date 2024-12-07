@@ -13,3 +13,12 @@ export async function getUser(): Promise<User> {
         }
     }).then(res => res.json());
 }
+
+export async function favoriteRestaurant(restaurantId: RestaurantId): Promise<Response> {
+    return fetch(`/api/v1/account/favorites?restaurantId=${restaurantId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+}

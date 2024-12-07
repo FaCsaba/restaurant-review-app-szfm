@@ -4,7 +4,7 @@ import "./restaurant-card.component.css";
 import { RestaurantTypeLogoChip } from "../restaurant-type-logo-chip/restaurant-type-logo-chip.component";
 import { Button } from "../button/button.component";
 import { ReviewComponent } from "../review/review.component";
-import { LikeToggle } from "../like-toggle/like-toggle.component";
+import { FavoriteToggle } from "../like-toggle/favorite-toggle.component";
 import { useUIStateStore } from "../../stores/state.store";
 
 export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
@@ -18,7 +18,7 @@ export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
                     <div className="restaurant-card-name-row">
                         <h2 className="restaurant-card-name">{restaurant.name}</h2>
                         <RestaurantTypeLogoChip restaurantType={restaurant.restaurantType} />
-                        <LikeToggle restaurantId={restaurant.id} />
+                        <FavoriteToggle restaurantId={restaurant.id} />
                     </div>
                     <div className="sub"><i className="bi bi-star-fill sub-icon" /> {restaurant.rating}</div>
                     <div className="sub"><i className="bi bi-geo-alt-fill sub-icon" /> {restaurant.location.addLine1}</div>
