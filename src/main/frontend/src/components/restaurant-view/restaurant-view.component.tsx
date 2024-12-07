@@ -26,7 +26,7 @@ export function RestaurantView({ restaurant }: { restaurant: Restaurant }) {
 
         <div className="restaurant-view-review">
             <h2 className="restaurant-view-review-header">Reviews</h2>
-            <ReviewInput />
+            <ReviewInput restaurantId={restaurant.id} />
             {restaurant.reviews.map((review) => <ReviewComponent key={review.id} review={review} />)}
         </div>
 

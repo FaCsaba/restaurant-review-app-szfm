@@ -4,7 +4,7 @@ export type Review = {
     id: ReviewId;
     rating: number;
     username: string;
-    content?: string | null;
+    reviewText?: string | null;
 }
 
 export type RestaurnatLocation = {
@@ -61,4 +61,18 @@ export async function getRestaurants(filter: RestaurantsFilter): Promise<Restaur
             "Content-Type": "application/json"
         }
     }).then(res => res.json());
+}
+
+export async function postReview(restaurantId: RestaurantId, rating: number, reviewText: string): Promise<Response> {
+    return fetch('/api/v1/review', {
+        body: JSON.stringify({
+            reviewText,
+            rating,
+            restaurantId,
+        }),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
 }
