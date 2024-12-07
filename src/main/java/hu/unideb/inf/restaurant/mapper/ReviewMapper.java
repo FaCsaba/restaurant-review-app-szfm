@@ -6,6 +6,7 @@ import hu.unideb.inf.restaurant.entity.Review;
 import hu.unideb.inf.restaurant.entity.Restaurant;
 import hu.unideb.inf.restaurant.repository.AccountRepository;
 import hu.unideb.inf.restaurant.repository.RestaurantRepository;
+import lombok.AllArgsConstructor;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
