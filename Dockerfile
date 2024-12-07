@@ -6,7 +6,7 @@ COPY . /usr/src/
 # Build Java Application
 RUN mvn -f /usr/src/pom.xml clean install -DskipTests
 
-FROM openjdk:23
+FROM openjdk:21
 WORKDIR /app
 
 # Copy the JAR file from the build stage (/app)

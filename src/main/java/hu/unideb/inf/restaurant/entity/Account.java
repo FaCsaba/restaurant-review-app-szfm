@@ -35,8 +35,18 @@ public class Account implements UserDetails {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
 
+    /*
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Favorite> favorites;
+    */
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "favorite",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "restaurant_id")
+    )
+    private List<Restaurant> favorites;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

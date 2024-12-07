@@ -42,4 +42,6 @@ public class Restaurant {
     @JsonIgnore
     private List<Review> reviews;
 
+    @ManyToMany(mappedBy = "favorites", fetch = FetchType.LAZY)
+    private List<Account> accounts;
 }
