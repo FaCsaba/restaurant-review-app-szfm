@@ -17,7 +17,7 @@ Follow these instructions to set up and run the app locally for development or t
 ### 📒Prerequisites
 
 Ensure you have the following installed:
-- [Java 23](https://www.oracle.com/java/technologies/downloads/)
+- [Java 21](https://www.oracle.com/java/technologies/downloads/)
 - Spring Boot 3.3.4
 - Maven latest
 
