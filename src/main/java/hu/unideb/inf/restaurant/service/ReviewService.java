@@ -44,6 +44,11 @@ public class ReviewService {
             review.setAccount(account.get());
             review.setRestaurant(restaurant);
             reviewRepository.save(review);
+        } else if(account.isEmpty()) {
+            restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
+            restaurantRepository.save(restaurant);
+            review.setRestaurant(restaurant);
+            reviewRepository.save(review);
         }
     }
 
