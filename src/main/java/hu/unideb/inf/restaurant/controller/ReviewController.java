@@ -3,7 +3,6 @@ package hu.unideb.inf.restaurant.controller;
 import hu.unideb.inf.restaurant.data.ReviewDto;
 import hu.unideb.inf.restaurant.service.ReviewService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

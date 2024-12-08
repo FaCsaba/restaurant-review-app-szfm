@@ -3,10 +3,8 @@ package hu.unideb.inf.restaurant.controller;
 import hu.unideb.inf.restaurant.data.CoordinatesDto;
 import hu.unideb.inf.restaurant.data.FilterRestaurantsDto;
 import hu.unideb.inf.restaurant.data.RestaurantAndReviewsDto;
-import hu.unideb.inf.restaurant.entity.enums.RestaurantType;
 import hu.unideb.inf.restaurant.service.RestaurantService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

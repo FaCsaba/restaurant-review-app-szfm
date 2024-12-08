@@ -51,6 +51,7 @@ VALUES
 INSERT INTO account (username, password, role)
 VALUES
     ('Csabi', 'asd123', 'ADMIN'),
+    ('Anonymous', 'anonymous', 'GUEST'),
     ('Zsolti', 'igennem12', 'USER'),
     ('Bence', 'bombabiztosjelszo3', 'USER'),
     ('Feri', 'nincsjelszo72', 'USER'),

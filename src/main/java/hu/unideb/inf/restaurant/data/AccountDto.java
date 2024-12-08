@@ -1,6 +1,6 @@
 package hu.unideb.inf.restaurant.data;
 
-import java.io.Serializable;
+
 import java.util.List;
 
 /**

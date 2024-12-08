@@ -4,7 +4,6 @@ import hu.unideb.inf.restaurant.data.AccountDto;
 import hu.unideb.inf.restaurant.service.AccountService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

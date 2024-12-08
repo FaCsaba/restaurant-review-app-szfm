@@ -6,13 +6,12 @@ import hu.unideb.inf.restaurant.entity.Review;
 import hu.unideb.inf.restaurant.entity.Restaurant;
 import hu.unideb.inf.restaurant.repository.AccountRepository;
 import hu.unideb.inf.restaurant.repository.RestaurantRepository;
-import lombok.AllArgsConstructor;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 @Mapper(componentModel = "spring")
 public abstract class ReviewMapper {

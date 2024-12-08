@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ReviewMapper.class})
 public interface RestaurantMapper {
     RestaurantAndReviewsDto restaurantToRestaurantDto(Restaurant restaurant);
     Restaurant restaurantDtoToRestaurant(RestaurantAndReviewsDto restaurantDto);

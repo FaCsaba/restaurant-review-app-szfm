@@ -1,6 +1,7 @@
 package hu.unideb.inf.restaurant.service;
 
 import hu.unideb.inf.restaurant.data.ReviewDto;
+import hu.unideb.inf.restaurant.entity.Account;
 import hu.unideb.inf.restaurant.entity.Restaurant;
 import hu.unideb.inf.restaurant.entity.Review;
 import hu.unideb.inf.restaurant.mapper.ReviewMapper;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ReviewService {
@@ -28,11 +30,17 @@ public class ReviewService {
     public void saveReview(ReviewDto dto) {
         Review review = reviewMapper.reviewDtoToReview(dto);
         Restaurant restaurant = review.getRestaurant();
-        restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
-        restaurantRepository.save(restaurant);
+        Account account = review.getAccount();
+        //TODO: jobb megoldast talalni erre
+        if((account != null && account.getReviews().stream()
+                .noneMatch(rev -> rev.getRestaurant().equals(restaurant)))
+        || Objects.equals(Objects.requireNonNull(account).getUsername(), "Anonymous")) {
+            restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
+            restaurantRepository.save(restaurant);
 
-        review.setRestaurant(restaurant);
-        reviewRepository.save(review);
+            review.setRestaurant(restaurant);
+            reviewRepository.save(review);
+        }
     }
 
 
