@@ -1,20 +1,25 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "./register.component.css";
 import { FormEvent, useState } from "react";
+import { useRegisterMutation } from "../../queries/user.query";
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordAgain, setPasswordAgain] = useState('');
 
+    const navigate = useNavigate();
+    const { mutate: register, error } = useRegisterMutation();
+
     function onRegisterSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        // TODO
+        register({ username, password }, { onSuccess: () => navigate("/") });
     }
 
     return (
         <form className="user-form" onSubmit={onRegisterSubmit}>
             <h1 className="register-header">Register</h1>
+            {error as Error && <h2 className="danger">{(error as Error).message}</h2>}
             <label>Username</label>
             <div className="icon-input">
                 <i className="bi bi-person-fill icon" />
