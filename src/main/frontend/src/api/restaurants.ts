@@ -1,3 +1,5 @@
+import { JWT_TOKEN_LOCAL_STORAGE_LOCATION } from "../utils/local-storage.consts";
+
 type ReviewId = number & { __type: "review" };
 
 export type Review = {
@@ -72,7 +74,8 @@ export async function postReview(restaurantId: RestaurantId, rating: number, rev
         }),
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION)
         }
     });
 }
