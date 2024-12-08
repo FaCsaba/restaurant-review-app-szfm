@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { divIcon, Map } from "leaflet";
 import pin from "../../../assets/map-pin.svg";
 import { RestaurantCard } from "../../components/restaurant-card/restaurant-card.component";
-import { SearchStrip } from "../../components/search-strip/search-strip.component";
+import { SearchStripWithUser } from "../../components/search-strip/search-strip.component";
 import { useUserLocation } from "../../queries/user-location.query";
 import { useRestaurants } from "../../queries/restaurants.query";
 import { useFilterStore } from "../../stores/filter.store";
@@ -27,7 +27,7 @@ export function Index() {
 
     return (
         <>
-            {(!isSearching && !selectedRestaurant) && <SearchStrip />}
+            {(!isSearching && !selectedRestaurant) && <SearchStripWithUser />}
             {isSearching && <SearchOverlay restaurants={restaurants} />}
             {selectedRestaurant && <RestaurantView restaurant={selectedRestaurant} />}
             <MapContainer center={[filter.coords.latitude, filter.coords.longitude]} zoom={18} ref={mapRef} zoomControl={false}>
