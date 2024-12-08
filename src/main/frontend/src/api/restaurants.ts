@@ -66,6 +66,7 @@ export async function getRestaurants(filter: RestaurantsFilter): Promise<Restaur
 }
 
 export async function postReview(restaurantId: RestaurantId, rating: number, reviewText: string): Promise<Response> {
+    const token = localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION);
     return fetch('/api/v1/review', {
         body: JSON.stringify({
             reviewText,
@@ -75,7 +76,7 @@ export async function postReview(restaurantId: RestaurantId, rating: number, rev
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION)
+            "Authorization": token ? "Bearer " + token : ''
         }
     });
 }
