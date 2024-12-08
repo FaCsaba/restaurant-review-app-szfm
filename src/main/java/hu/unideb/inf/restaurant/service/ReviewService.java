@@ -5,14 +5,17 @@ import hu.unideb.inf.restaurant.entity.Account;
 import hu.unideb.inf.restaurant.entity.Restaurant;
 import hu.unideb.inf.restaurant.entity.Review;
 import hu.unideb.inf.restaurant.mapper.ReviewMapper;
+import hu.unideb.inf.restaurant.repository.AccountRepository;
 import hu.unideb.inf.restaurant.repository.RestaurantRepository;
 import hu.unideb.inf.restaurant.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class ReviewService {
@@ -24,20 +27,20 @@ public class ReviewService {
     private RestaurantRepository restaurantRepository;
 
     @Autowired
+    private AccountService accountService;
+
+    @Autowired
     ReviewMapper reviewMapper;
 
     @Transactional
     public void saveReview(ReviewDto dto) {
         Review review = reviewMapper.reviewDtoToReview(dto);
         Restaurant restaurant = review.getRestaurant();
-        Account account = review.getAccount();
-        //TODO: jobb megoldast talalni erre
-        if((account != null && account.getReviews().stream()
-                .noneMatch(rev -> rev.getRestaurant().equals(restaurant)))
-        || Objects.equals(Objects.requireNonNull(account).getUsername(), "Anonymous")) {
+        Optional<Account> account = accountService.getAccount();
+        if(account.isPresent()) {
             restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
             restaurantRepository.save(restaurant);
-
+            review.setAccount(account.get());
             review.setRestaurant(restaurant);
             reviewRepository.save(review);
         }
