@@ -35,6 +35,15 @@ public class AccountService {
         });
     }
 
+    public void removeRestaurantFromFavorites(Integer restaurantId) {
+        Optional<Account> account = getAccount();
+        Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantId);
+        account.ifPresent(value -> {
+            value.getFavorites().remove(restaurant);
+            accountRepository.save(account.get());
+        });
+    }
+
     private Optional<Account> getAccount() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication.isAuthenticated()) {

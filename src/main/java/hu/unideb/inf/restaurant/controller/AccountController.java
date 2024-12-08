@@ -21,4 +21,9 @@ public class AccountController {
     public void addRestaurantToFavorites(@RequestParam Integer restaurantId) {
         accountService.addRestaurantToFavorites(restaurantId);
     }
+
+    @DeleteMapping("/favorites")
+    public void removeRestaurantToFavorites(@RequestParam Integer restaurantId) {
+        accountService.removeRestaurantFromFavorites(restaurantId);
+    }
 }
