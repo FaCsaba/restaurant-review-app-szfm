@@ -2,7 +2,6 @@ package hu.unideb.inf.restaurant.data;
 
 import hu.unideb.inf.restaurant.entity.enums.EuropeanCountries;
 
-import java.io.Serializable;
 
 /**
  * DTO for {@link hu.unideb.inf.restaurant.entity.Location}

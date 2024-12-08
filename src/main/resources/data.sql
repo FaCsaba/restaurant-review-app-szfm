@@ -50,8 +50,7 @@ VALUES
 
 INSERT INTO account (username, password, role)
 VALUES
-    ('Csabi', 'asd123', 'ADMIN'),
-    ('Zsolti', 'igennem12', 'USER'),
-    ('Bence', 'bombabiztosjelszo3', 'USER'),
-    ('Feri', 'nincsjelszo72', 'USER'),
-    ('István', 'eltöredezettségmentesítőtleníttethetetlenségtelenítőtlenkedhetnétek', 'USER');
+    ('Csabi', '$2a$12$WgRTV8OPzpZ4k1/8c8/Gau7pxs.aRWezWk8hjWzQBz.l325s1OONy', 'ADMIN'),
+    ('Anonymous', '$2a$12$Wij3whsi3dO/F1p4j2N0/On6IZPOM8QOIPfOVun45/2JZZthKGqly', 'GUEST'),
+    ('Miki', '$2a$12$1Bul0pBfYB6i4IIB7qzCYeDkS3RN9X3at5BXJsZYXtjcdFeux8JuG', 'USER'),
+    ('Bence', '$2a$12$u2WkZbpREp75E/qF./4RFeelICFkKI9qvf7hfETHhgh3v66qdcOWO', 'USER');

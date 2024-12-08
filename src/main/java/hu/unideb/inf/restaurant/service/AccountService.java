@@ -8,7 +8,6 @@ import hu.unideb.inf.restaurant.repository.AccountRepository;
 import hu.unideb.inf.restaurant.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +31,15 @@ public class AccountService {
         Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantId);
         account.ifPresent(value -> {
             value.getFavorites().add(restaurant);
+            accountRepository.save(account.get());
+        });
+    }
+
+    public void removeRestaurantFromFavorites(Integer restaurantId) {
+        Optional<Account> account = getAccount();
+        Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantId);
+        account.ifPresent(value -> {
+            value.getFavorites().remove(restaurant);
             accountRepository.save(account.get());
         });
     }
