@@ -37,7 +37,8 @@ public class ReviewService {
         Review review = reviewMapper.reviewDtoToReview(dto);
         Restaurant restaurant = review.getRestaurant();
         Optional<Account> account = accountService.getAccount();
-        if(account.isPresent()) {
+        if(account.isPresent() && account.get().getReviews().stream()
+                .noneMatch(rev -> rev.getRestaurant().equals(restaurant))) {
             restaurant.setRating(addToAverageRating(restaurant, review.getRating()));
             restaurantRepository.save(restaurant);
             review.setAccount(account.get());
