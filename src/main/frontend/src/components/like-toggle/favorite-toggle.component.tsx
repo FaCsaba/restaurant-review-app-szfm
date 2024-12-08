@@ -1,11 +1,11 @@
 import { RestaurantId } from "../../api/restaurants";
-import { useFavoriteRestaurantMutation, useUser } from "../../queries/user.query";
+import { useFavoriteRestaurantMutation, useUnfavoriteRestaurantMutation, useUser } from "../../queries/user.query";
 import "./favorite-toggle.component.css";
 
 export function FavoriteToggle({ restaurantId }: { restaurantId: RestaurantId }) {
     const { data: user } = useUser();
     const { mutate: favorite } = useFavoriteRestaurantMutation();
-    const { mutate: unfavorite } = useFavoriteRestaurantMutation();
+    const { mutate: unfavorite } = useUnfavoriteRestaurantMutation();
 
     const isFavorite = user?.favorites?.includes(restaurantId);
 
