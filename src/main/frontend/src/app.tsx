@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Index } from "./pages/index/index.page";
 import "./app.css";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router";
 import Login from "./pages/login/login.component";
 import Register from "./pages/register/register.component";
 
@@ -14,16 +14,29 @@ const queryClient = new QueryClient({
     }
 })
 
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Index />
+    },
+    {
+        path: '/login',
+        element: <Login />
+    },
+    {
+        path: '/register',
+        element: <Register />
+    },
+    {
+        path: "*",
+        loader: () => redirect("/")
+    }
+])
+
 export function App() {
     return (
         <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <Routes>
-                    <Route index element={<Index />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="register" element={<Register />} />
-                </Routes>
-            </BrowserRouter>
+            <RouterProvider router={router} />
         </QueryClientProvider>
     );
 }
