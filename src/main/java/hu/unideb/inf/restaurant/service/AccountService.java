@@ -44,7 +44,7 @@ public class AccountService {
         });
     }
 
-    private Optional<Account> getAccount() {
+    public Optional<Account> getAccount() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication.isAuthenticated()) {
             return accountRepository.findAccountByUsername(authentication.getName());
