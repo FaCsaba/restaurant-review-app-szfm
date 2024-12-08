@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { favoriteRestaurant, getUser, login, register } from "../api/user";
+import { favoriteRestaurant, getUser, login, register, unfavoriteRestaurant } from "../api/user";
 import { RestaurantId } from "../api/restaurants";
 import { JWT_TOKEN_LOCAL_STORAGE_LOCATION } from "../utils/local-storage.consts";
 
@@ -14,6 +14,14 @@ export function useFavoriteRestaurantMutation() {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: (restaurantId: RestaurantId) => favoriteRestaurant(restaurantId),
+        onSuccess: () => queryClient.invalidateQueries(['user']),
+    })
+}
+
+export function useUnfavoriteRestaurantMutation() {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: (restaurantId: RestaurantId) => unfavoriteRestaurant(restaurantId),
         onSuccess: () => queryClient.invalidateQueries(['user']),
     })
 }

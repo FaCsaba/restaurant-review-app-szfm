@@ -6,22 +6,38 @@ export interface User {
     favorites: RestaurantId[];
 }
 
-export async function getUser(): Promise<User> {
+export async function getUser(): Promise<User | null> {
+    const token = localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION);
+    if (!token) return Promise.resolve(null);
     return fetch('/api/v1/account/favorites', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION)
+            "Authorization": "Bearer " + token
         }
     }).then(res => res.json());
 }
 
-export async function favoriteRestaurant(restaurantId: RestaurantId): Promise<Response> {
+export async function favoriteRestaurant(restaurantId: RestaurantId): Promise<Response | null> {
+    const token = localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION);
+    if (!token) return Promise.resolve(null);
     return fetch(`/api/v1/account/favorites?restaurantId=${restaurantId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION)
+            "Authorization": "Bearer " + token
+        }
+    });
+}
+
+export async function unfavoriteRestaurant(restaurantId: RestaurantId): Promise<Response | null> {
+    const token = localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_LOCATION);
+    if (!token) return Promise.resolve(null);
+    return fetch(`/api/v1/account/favorites?restaurantId=${restaurantId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
         }
     });
 }
