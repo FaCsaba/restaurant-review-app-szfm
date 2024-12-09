@@ -29,10 +29,11 @@ public class AccountService {
     public void addRestaurantToFavorites(Integer restaurantId) {
         Optional<Account> account = getAccount();
         Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantId);
-        account.ifPresent(value -> {
-            value.getFavorites().add(restaurant);
+        if (account.isPresent() && restaurant != null
+                && !account.get().getFavorites().contains(restaurant)) {
+            account.get().getFavorites().add(restaurant);
             accountRepository.save(account.get());
-        });
+        }
     }
 
     public void removeRestaurantFromFavorites(Integer restaurantId) {
