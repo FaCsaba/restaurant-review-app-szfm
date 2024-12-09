@@ -15,14 +15,26 @@ A high level overview on how our architecture looks like.
 - Leaflet, React-Leaflet: built on top of OpenStreetMap data, providing easy way to use maps
 - Zustand: reactive store solution
 
-### Structure
-- `api`: all api requests we can make to the BE
-- `pages`: individual pages on the website
-- `components`: composable smaller units
-- `svg-loader`: a vite plugin to load in svgs as raw strings
-- `app.tsx`: the application entry point
-- `main.tsx`: react entry point
-- `index.html`: first page loaded by the browser
+## Structure
+```
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "User" as a1
+actor "Logged in User" as a2
+rectangle "Restaurant review" {
+  a1 --> (Login)
+  (Login) --> a2
+  a1 --> (Register)
+  (Register) --> a2
+  a1 --> (View Restaurants)
+  a2 --> (View Restaurants)
+  a1 --> (Write anonym review)
+  a2 --> (Write review)
+  a2 --> (Favorite restaurant)
+}
+@enduml
+```
 
 ### Example Observable
 ```
