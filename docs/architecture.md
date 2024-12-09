@@ -3,6 +3,8 @@ A high level overview on how our architecture looks like.
 ---
 
 ## BE:
+### Technologies:
+- Java Spring Boot
 
 ## FE:
 ### Technologies:
