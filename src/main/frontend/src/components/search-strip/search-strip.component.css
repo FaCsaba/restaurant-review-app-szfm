@@ -19,6 +19,20 @@
     display: none;
 }
 
+.search-strip-search-bar {
+    display: flex;
+    gap: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+    .search-strip-search-bar > .icon-input {
+        width: 100%;
+    }
+    .search-strip {
+        flex-direction: column;
+    }
+}
+
 .search-strip.flat {
     flex-direction: column;
     position: unset;

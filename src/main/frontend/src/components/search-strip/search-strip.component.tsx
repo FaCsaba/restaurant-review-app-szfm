@@ -9,15 +9,17 @@ import "./search-strip.component.css";
 
 export function SearchStrip({ className, children, ...other }: React.HTMLAttributes<HTMLDivElement>) {
     return <div className={cn("search-strip", className)} {...other} >
-        {children}
-        <SearchBar />
+        <div className="search-strip-search-bar">
+            {children}
+            <SearchBar />
+        </div>
         <div className="search-strip-filter-container">
             {Object.values(RestaurantType).map((t, i) => <RestaurantTypeChip key={i} restaurantType={t} />)}
         </div>
     </div>
 }
 
-export function SearchStripWithUser({ className, ...other}: React.HTMLAttributes<HTMLDivElement>) {
+export function SearchStripWithUser({ className, ...other }: React.HTMLAttributes<HTMLDivElement>) {
     const navigate = useNavigate();
     const { data: user } = useUser();
 
