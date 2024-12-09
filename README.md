@@ -11,6 +11,9 @@ This magnificent app makes it easy to explore and connect with the local food sc
 ## 📁 Documentation
 https://github.com/mercenarymichael/restaurant-review-app-szfm/tree/main/docs
 
+## Trello
+https://trello.com/b/8FWxKuTu/restaurant-review-app-szfm
+
 ## 🚀 Getting Started
 Follow these instructions to set up and run the app locally for development or testing.
 
